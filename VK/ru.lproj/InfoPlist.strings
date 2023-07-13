@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  VK
+
+  Created by Andrei on 11.07.2023.
+  
+*/
+NSFaceIDUsageDescription = "Разрешите использование Face ID";

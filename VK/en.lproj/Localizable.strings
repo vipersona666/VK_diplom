@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  VK
+
+  Created by Andrei on 10.07.2023.
+  
+*/
+"email" = "E-mail";
+"password" = "Password";
+"sign_in" = "Sign in";
+"sign_up" = "Sign up";
+"auto_login" = "Auto logged in";
+"login_error" = "Login failed";
+"enter_login_and_password" = "Enter login and password";
+"close" = "Close";
+"sign_in_or_sign_up" = "Login or register";
+"registration_error" = "Registration error";
+"photo_processing" = "Wait a minute photo processing in progress";
+"photo_gallery" = "Photo Gallery";
+"go_to_post" = "Go to post";
+"check_word" = "Word check";
+"enter_word" = "Enter a word";
+"feed" = "Feed";
+"new_post" = "New post";
+"alert_check_word" = "This field cannot be empty! Enter a word to check!";
+"right" = "Right";
+"wrong" = "Wrong";
+"favorites" = "Favorites";
+"response_server" = "Response from the server";
+"period" = "Planet's orbital period:";
+"no_data" = "No data";
+"moscow" = "Moscow";
+"pin" = "Pin";
+"brutforce" = "Password: ";
+"cat_pirat" = "Pirat cat";
+"advanced" = "Advanced";
+"cat_programmer" = "Programmer cat";
+"beginner" = "Beginner";
+"main" = "Main";
+"profile" = "Profile";
+"info" = "Info";
+"map" = "Map";
+"peaky" = "Peaky Blinders";
+"rick" = "Rick and Morty";
+"raised" = "Raised by Wolves";
+"breaking" = "Breaking Bad";
+"status" = "Set the status";
+"show_status" = "Show status";
+"albom" = "Photos";
+"biometrical" = "Use Face ID";
+"empty_field" = "Fields must not be empty";
+"enter_password_to_log" = "Enter your password to log into your account";
+"error_biometrical" = "Error. Unable to use biometrics";
+"excellent" = "Excellent";
+"authentication" = "Authentication passed";
+"ok" = "Ok";
+"error" = "Error";
+"check_update" = "Check out the latest updates";
+"click_notification" = "Click on this notification to view updates";
