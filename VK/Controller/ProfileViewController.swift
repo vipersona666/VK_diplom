@@ -11,16 +11,6 @@ class ProfileViewController: UIViewController {
     
     //заполняем таблицу данными из массива
     private var postModel = posts
-    
-//    let user: User?
-//    
-//    init(user: User){
-//        self.user = user
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -101,5 +91,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
         cell.index = indexPath
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let vc = PhotosViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
 }

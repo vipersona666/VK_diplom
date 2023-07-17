@@ -132,11 +132,24 @@ class PostTableViewCell: UITableViewCell {
     @objc func doubleTap() {
         let model = posts
            if index != nil {
-               if let _ = coreDataManager.posts.firstIndex(where: { $0.id == model[index!.section].id }) {
+               if let _ = coreDataManager.posts.firstIndex(where: { $0.id == model[index!.row].id }) {
                    print("Эта запись уже в избранном!")
+                   let alert = UIAlertController(title: "alert_check_word".localized, message: .none, preferredStyle: .actionSheet)
+                   let cancelButton = UIAlertAction(title: "enter_word".localized, style: .cancel) {_ in
+                   }
+                   //окно алерт, с сообщением о дубликате
+                   alert.addAction(cancelButton)
+                   let keyWindow = UIApplication.shared.connectedScenes
+                           .filter({$0.activationState == .foregroundActive})
+                           .map({$0 as? UIWindowScene})
+                           .compactMap({$0})
+                           .first?.windows
+                           .filter({$0.isKeyWindow}).first
+                   keyWindow?.endEditing(true)
+                   keyWindow?.rootViewController?.present(alert, animated: true)
                } else {
-                   print(model[index!.section].author)
-                   coreDataManager.createPost (title: model[index!.section].author , descriptionPost: model[index!.section].description, image: model[index!.section].image, likes: Int16(model[index!.section].likes), views: Int16(model[index!.section].views), id: model[index!.section].id)
+                   print(model[index!.row].author)
+                   coreDataManager.createPost (title: model[index!.row].author , descriptionPost: model[index!.row].description, image: model[index!.row].image, likes: Int16(model[index!.row].likes), views: Int16(model[index!.row].views), id: model[index!.row].id)
                    coreDataManager.reloadPosts()
                  
                }

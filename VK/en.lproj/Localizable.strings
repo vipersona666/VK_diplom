@@ -19,10 +19,10 @@
 "photo_gallery" = "Photo Gallery";
 "go_to_post" = "Go to post";
 "check_word" = "Word check";
-"enter_word" = "Enter a word";
+"enter_word" = "Cancel";
 "feed" = "Feed";
 "new_post" = "New post";
-"alert_check_word" = "This field cannot be empty! Enter a word to check!";
+"alert_check_word" = "This post is already available in favorites";
 "right" = "Right";
 "wrong" = "Wrong";
 "favorites" = "Favorites";
