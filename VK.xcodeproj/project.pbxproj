@@ -11,6 +11,9 @@
 		752F810F2A5FEF3900287043 /* FeedPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F810E2A5FEF3900287043 /* FeedPosts.swift */; };
 		752F81122A5FF30900287043 /* Post.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 752F81102A5FF30900287043 /* Post.xcdatamodeld */; };
 		752F81142A600E5600287043 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F81132A600E5600287043 /* PhotosTableViewCell.swift */; };
+		752F81162A63174100287043 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F81152A63174100287043 /* ProfileHeaderView.swift */; };
+		752F81182A63200800287043 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F81172A63200800287043 /* CustomButton.swift */; };
+		752F811A2A63206800287043 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F81192A63206800287043 /* User.swift */; };
 		7568B8162A5EC84900FF88F7 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7568B8152A5EC84900FF88F7 /* PostTableViewCell.swift */; };
 		7568B8182A5EC9BD00FF88F7 /* ExtentionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7568B8172A5EC9BD00FF88F7 /* ExtentionColor.swift */; };
 		75D104BC2A5C598200EA8E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D104BB2A5C598200EA8E3A /* AppDelegate.swift */; };
@@ -31,6 +34,9 @@
 		752F810E2A5FEF3900287043 /* FeedPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPosts.swift; sourceTree = "<group>"; };
 		752F81112A5FF30900287043 /* Post.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Post.xcdatamodel; sourceTree = "<group>"; };
 		752F81132A600E5600287043 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		752F81152A63174100287043 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		752F81172A63200800287043 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		752F81192A63206800287043 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7568B8152A5EC84900FF88F7 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		7568B8172A5EC9BD00FF88F7 /* ExtentionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionColor.swift; sourceTree = "<group>"; };
 		75D104B82A5C598200EA8E3A /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				75D104CF2A5C604A00EA8E3A /* Model */,
-				75D104D02A5C605300EA8E3A /* View */,
+				75D104D02A5C605300EA8E3A /* Helpers */,
 				75D104D22A5C606C00EA8E3A /* Controller */,
 				75D104BB2A5C598200EA8E3A /* AppDelegate.swift */,
 				75D104BD2A5C598200EA8E3A /* SceneDelegate.swift */,
@@ -103,15 +109,17 @@
 			children = (
 				752F810C2A5FEEDB00287043 /* CoreDataManager.swift */,
 				752F810E2A5FEF3900287043 /* FeedPosts.swift */,
+				752F81192A63206800287043 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		75D104D02A5C605300EA8E3A /* View */ = {
+		75D104D02A5C605300EA8E3A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				752F81172A63200800287043 /* CustomButton.swift */,
 			);
-			path = View;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		75D104D22A5C606C00EA8E3A /* Controller */ = {
@@ -122,6 +130,7 @@
 				75D104D52A5C625000EA8E3A /* SelectedViewController.swift */,
 				7568B8152A5EC84900FF88F7 /* PostTableViewCell.swift */,
 				752F81132A600E5600287043 /* PhotosTableViewCell.swift */,
+				752F81152A63174100287043 /* ProfileHeaderView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -203,6 +212,7 @@
 				75D104C02A5C598200EA8E3A /* LoginViewController.swift in Sources */,
 				75D104BC2A5C598200EA8E3A /* AppDelegate.swift in Sources */,
 				75D104D62A5C625000EA8E3A /* SelectedViewController.swift in Sources */,
+				752F811A2A63206800287043 /* User.swift in Sources */,
 				7568B8162A5EC84900FF88F7 /* PostTableViewCell.swift in Sources */,
 				75D104E42A5D58BC00EA8E3A /* ExtentionString.swift in Sources */,
 				75D104D42A5C621200EA8E3A /* ProfileViewController.swift in Sources */,
@@ -210,8 +220,10 @@
 				75D104BE2A5C598200EA8E3A /* SceneDelegate.swift in Sources */,
 				752F81142A600E5600287043 /* PhotosTableViewCell.swift in Sources */,
 				752F810D2A5FEEDB00287043 /* CoreDataManager.swift in Sources */,
+				752F81162A63174100287043 /* ProfileHeaderView.swift in Sources */,
 				75D104E62A5D5E8D00EA8E3A /* Palette.swift in Sources */,
 				752F81122A5FF30900287043 /* Post.xcdatamodeld in Sources */,
+				752F81182A63200800287043 /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

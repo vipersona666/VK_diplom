@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let selectedViewController = UINavigationController(rootViewController: SelectedViewController())
     
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.backgroundColor = .white
+        tabBarController.tabBar.backgroundColor = .clear
         
         tabBarController.viewControllers = [profileViewController, selectedViewController]
         tabBarController.viewControllers?[0].tabBarItem.title = "profile".localized
