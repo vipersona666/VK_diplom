@@ -16,6 +16,14 @@
 		752F811C2A65704800287043 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F811B2A65704800287043 /* PhotosViewController.swift */; };
 		752F811E2A65717500287043 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F811D2A65717500287043 /* PhotosCollectionViewCell.swift */; };
 		752F81202A6575AB00287043 /* ShowPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F811F2A6575AB00287043 /* ShowPhotoViewController.swift */; };
+		752F81262A66ADB400287043 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 752F81252A66ADB400287043 /* RealmSwift */; };
+		752F81282A66AF9900287043 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F81272A66AF9900287043 /* AuthModel.swift */; };
+		752F812A2A66B05400287043 /* ChekerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F81292A66B05400287043 /* ChekerService.swift */; };
+		752F812F2A66C4CA00287043 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 752F812E2A66C4C900287043 /* GoogleService-Info.plist */; };
+		755CBE862A66C7460058FD7B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 755CBE852A66C7460058FD7B /* FirebaseAuth */; };
+		755CBE882A66C7460058FD7B /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 755CBE872A66C7460058FD7B /* FirebaseDatabase */; };
+		755CBE8A2A66C9B30058FD7B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755CBE892A66C9B30058FD7B /* User.swift */; };
+		755CBE8C2A66D50D0058FD7B /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755CBE8B2A66D50D0058FD7B /* LoginViewControllerDelegate.swift */; };
 		7568B8162A5EC84900FF88F7 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7568B8152A5EC84900FF88F7 /* PostTableViewCell.swift */; };
 		7568B8182A5EC9BD00FF88F7 /* ExtentionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7568B8172A5EC9BD00FF88F7 /* ExtentionColor.swift */; };
 		75D104BC2A5C598200EA8E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D104BB2A5C598200EA8E3A /* AppDelegate.swift */; };
@@ -41,6 +49,11 @@
 		752F811B2A65704800287043 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		752F811D2A65717500287043 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		752F811F2A6575AB00287043 /* ShowPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPhotoViewController.swift; sourceTree = "<group>"; };
+		752F81272A66AF9900287043 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		752F81292A66B05400287043 /* ChekerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChekerService.swift; sourceTree = "<group>"; };
+		752F812E2A66C4C900287043 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		755CBE892A66C9B30058FD7B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		755CBE8B2A66D50D0058FD7B /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		7568B8152A5EC84900FF88F7 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		7568B8172A5EC9BD00FF88F7 /* ExtentionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionColor.swift; sourceTree = "<group>"; };
 		75D104B82A5C598200EA8E3A /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +78,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755CBE882A66C7460058FD7B /* FirebaseDatabase in Frameworks */,
+				752F81262A66ADB400287043 /* RealmSwift in Frameworks */,
+				755CBE862A66C7460058FD7B /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +115,7 @@
 				75D104DB2A5C6C7500EA8E3A /* Localizable.strings */,
 				75D104C42A5C598400EA8E3A /* Assets.xcassets */,
 				75D104C62A5C598400EA8E3A /* LaunchScreen.storyboard */,
+				752F812E2A66C4C900287043 /* GoogleService-Info.plist */,
 				75D104C92A5C598400EA8E3A /* Info.plist */,
 				75D104E12A5D55D400EA8E3A /* InfoPlist.strings */,
 			);
@@ -110,6 +127,9 @@
 			children = (
 				752F810C2A5FEEDB00287043 /* CoreDataManager.swift */,
 				752F810E2A5FEF3900287043 /* FeedPosts.swift */,
+				752F81272A66AF9900287043 /* AuthModel.swift */,
+				752F81292A66B05400287043 /* ChekerService.swift */,
+				755CBE892A66C9B30058FD7B /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,6 +157,7 @@
 				752F811B2A65704800287043 /* PhotosViewController.swift */,
 				752F811D2A65717500287043 /* PhotosCollectionViewCell.swift */,
 				752F811F2A6575AB00287043 /* ShowPhotoViewController.swift */,
+				755CBE8B2A66D50D0058FD7B /* LoginViewControllerDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -157,6 +178,11 @@
 			dependencies = (
 			);
 			name = VK;
+			packageProductDependencies = (
+				752F81252A66ADB400287043 /* RealmSwift */,
+				755CBE852A66C7460058FD7B /* FirebaseAuth */,
+				755CBE872A66C7460058FD7B /* FirebaseDatabase */,
+			);
 			productName = VK;
 			productReference = 75D104B82A5C598200EA8E3A /* VK.app */;
 			productType = "com.apple.product-type.application";
@@ -186,6 +212,10 @@
 				ru,
 			);
 			mainGroup = 75D104AF2A5C598200EA8E3A;
+			packageReferences = (
+				752F81242A66ADB400287043 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				755CBE842A66C7460058FD7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 75D104B92A5C598200EA8E3A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -202,6 +232,7 @@
 			files = (
 				75D104C82A5C598400EA8E3A /* LaunchScreen.storyboard in Resources */,
 				75D104DF2A5D55D400EA8E3A /* InfoPlist.strings in Resources */,
+				752F812F2A66C4CA00287043 /* GoogleService-Info.plist in Resources */,
 				75D104D92A5C6C7500EA8E3A /* Localizable.strings in Resources */,
 				75D104C52A5C598400EA8E3A /* Assets.xcassets in Resources */,
 			);
@@ -219,9 +250,12 @@
 				752F811C2A65704800287043 /* PhotosViewController.swift in Sources */,
 				75D104C02A5C598200EA8E3A /* LoginViewController.swift in Sources */,
 				75D104BC2A5C598200EA8E3A /* AppDelegate.swift in Sources */,
+				752F812A2A66B05400287043 /* ChekerService.swift in Sources */,
 				75D104D62A5C625000EA8E3A /* SelectedViewController.swift in Sources */,
 				7568B8162A5EC84900FF88F7 /* PostTableViewCell.swift in Sources */,
 				75D104E42A5D58BC00EA8E3A /* ExtentionString.swift in Sources */,
+				755CBE8C2A66D50D0058FD7B /* LoginViewControllerDelegate.swift in Sources */,
+				752F81282A66AF9900287043 /* AuthModel.swift in Sources */,
 				75D104D42A5C621200EA8E3A /* ProfileViewController.swift in Sources */,
 				7568B8182A5EC9BD00FF88F7 /* ExtentionColor.swift in Sources */,
 				75D104BE2A5C598200EA8E3A /* SceneDelegate.swift in Sources */,
@@ -232,6 +266,7 @@
 				752F811E2A65717500287043 /* PhotosCollectionViewCell.swift in Sources */,
 				752F81122A5FF30900287043 /* Post.xcdatamodeld in Sources */,
 				752F81182A63200800287043 /* CustomButton.swift in Sources */,
+				755CBE8A2A66C9B30058FD7B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +494,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		752F81242A66ADB400287043 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		755CBE842A66C7460058FD7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		752F81252A66ADB400287043 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 752F81242A66ADB400287043 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		755CBE852A66C7460058FD7B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 755CBE842A66C7460058FD7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		755CBE872A66C7460058FD7B /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 755CBE842A66C7460058FD7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		752F81102A5FF30900287043 /* Post.xcdatamodeld */ = {

@@ -7,9 +7,24 @@
 
 import UIKit
 
+protocol ProfileHeaderViewDelegate: AnyObject{
+    func actionButton()
+}
+
 class ProfileHeaderView: UITableViewHeaderFooterView{
     
+    weak var actionDelegate: ProfileHeaderViewDelegate?
+    
     weak var delegate: ProfileViewController?
+    
+    private lazy var logoutButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right.fill"), for: UIControl.State.normal)
+        button.tintColor = Palette.appButtonBackgroundColor
+        button.addTarget(self, action: #selector(self.logoutPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -83,7 +98,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView{
     }
     
     private func setupView(){
-        //self.backgroundColor = .lightGray
+        self.addSubview(logoutButton)
         self.addSubview(avatarImageView)
         self.addSubview(editButton)
         self.addSubview(nameLabel)
@@ -91,6 +106,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView{
         self.addSubview(textField)
         
         NSLayoutConstraint.activate([
+            self.logoutButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            self.logoutButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            //self.logoutButton.widthAnchor.constraint(equalToConstant: 140),
+            //self.logoutButton.heightAnchor.constraint(equalTo: self.avatarImageView.widthAnchor, multiplier: 1),
+            
             self.avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
             self.avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.avatarImageView.widthAnchor.constraint(equalToConstant: 140),
@@ -115,6 +135,12 @@ class ProfileHeaderView: UITableViewHeaderFooterView{
             self.editButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             self.editButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    @objc private func logoutPressed(){
+        print("logout!")
+        actionDelegate?.actionButton()
+        
     }
 
     @objc private func buttonPressed(){

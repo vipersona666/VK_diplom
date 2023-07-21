@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -16,8 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-//        let _ = UINavigationController(rootViewController: LoginViewController())
-        let profileViewController = UINavigationController(rootViewController: ProfileViewController())
+        //let loginViewController = LogInViewController()
+        //loginViewController.loginDelegate
+        let profileViewController = UINavigationController(rootViewController: LogInViewController())
         let selectedViewController = UINavigationController(rootViewController: SelectedViewController())
     
         let tabBarController = UITabBarController()

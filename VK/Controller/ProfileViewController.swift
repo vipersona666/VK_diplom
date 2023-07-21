@@ -6,11 +6,23 @@
 //
 
 import UIKit
+
 //профиль с лентой новостей
 class ProfileViewController: UIViewController {
     
+//    let user: User?
+//    
+//    init(user: User){
+//        self.user = user
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
     //заполняем таблицу данными из массива
     private var postModel = posts
+
    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -30,6 +42,8 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .createColor(ligthMode: .white, darkMode: .black)
         setupConstraints()
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
     }
    
     
@@ -41,6 +55,11 @@ class ProfileViewController: UIViewController {
             self.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    func logoutButton(){
+     
+        
     }
    
    
@@ -54,6 +73,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
                 return nil
             }
             headerView.delegate = self
+            headerView.actionDelegate = self
             return headerView
         }
         return nil
@@ -101,4 +121,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
         }
         
     }
+}
+extension ProfileViewController: ProfileHeaderViewDelegate{
+    func actionButton() {
+        let login = ""
+        UserDefaults.standard.set(login, forKey: "authKey")
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
 }

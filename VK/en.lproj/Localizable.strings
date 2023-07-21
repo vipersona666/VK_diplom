@@ -10,7 +10,7 @@
 "sign_in" = "Sign in";
 "sign_up" = "Sign up";
 "auto_login" = "Auto logged in";
-"login_error" = "Login failed";
+"login_error" = " Automatic login failed";
 "enter_login_and_password" = "Enter login and password";
 "close" = "Close";
 "sign_in_or_sign_up" = "Login or register";
@@ -32,7 +32,7 @@
 "moscow" = "Moscow";
 "pin" = "Pin";
 "brutforce" = "Password: ";
-"cat_pirat" = "Pirat cat";
+"robertDowne" = "Robert Downe";
 "advanced" = "Advanced";
 "cat_programmer" = "Programmer cat";
 "beginner" = "Beginner";
