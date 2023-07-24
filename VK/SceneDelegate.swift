@@ -17,14 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-        //let loginViewController = LogInViewController()
-        //loginViewController.loginDelegate
         let profileViewController = UINavigationController(rootViewController: LogInViewController())
         let selectedViewController = UINavigationController(rootViewController: SelectedViewController())
     
         let tabBarController = UITabBarController()
         tabBarController.tabBar.backgroundColor = .clear
-        
         tabBarController.viewControllers = [profileViewController, selectedViewController]
         tabBarController.viewControllers?[0].tabBarItem.title = "profile".localized
         tabBarController.viewControllers?[1].tabBarItem.title = "favorites".localized

@@ -51,8 +51,9 @@
 "empty_field" = "Fields must not be empty";
 "enter_password_to_log" = "Enter your password to log into your account";
 "error_biometrical" = "Error. Unable to use biometrics";
+"error_biometrical_auth" = "Log in or register to use biometrics";
 "excellent" = "Excellent";
-"authentication" = "Authentication passed";
+"authentication" = "Authorization passed";
 "ok" = "Ok";
 "error" = "Error";
 "check_update" = "Check out the latest updates";

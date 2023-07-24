@@ -47,12 +47,13 @@
 "status" = "добавьте статус";
 "show_status" = "Поменять статус";
 "albom" = "Фотоальбом";
-"biometrical" = "Использовать Face ID";
+"biometrical" = "Использовать Face ID/Touch ID";
 "empty_field" = "Поля не должны быть пустыми";
 "enter_password_to_log" = "Введите пароль для входа в аккаунт";
 "error_biometrical" = "Ошибка, невозможно использовать биометрию";
+"error_biometrical_auth" = "Войдите или зарегистрируйтесь, чтобы использовать биометрию";
 "excellent" = "Отлично";
-"authentication" = "Аутентификация пройдена";
+"authentication" = "Авторизация пройдена";
 "ok" = "Ок";
 "error" = "Ошибка";
 "check_update" = "Посмотрите последние обновления";

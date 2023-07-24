@@ -20,7 +20,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView{
     private lazy var logoutButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right.fill"), for: UIControl.State.normal)
-        button.tintColor = Palette.appButtonBackgroundColor
+        button.tintColor = UIColor(named: "appColor")!
         button.addTarget(self, action: #selector(self.logoutPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -41,7 +41,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView{
     private lazy var editButton: CustomButton = {
         let customButton = CustomButton(title: "show_status".localized,
                                         textColor: .white,
-                                        backgroundColorButton: Palette.appButtonBackgroundColor,
+                                        backgroundColorButton: UIColor(named: "appColor")!,
                                         clipsToBoundsOfButton: false,
                                         cornerRadius: 12,
                                         shadowOpacity: 0.7,
@@ -79,7 +79,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView{
         text.layer.cornerRadius = 12
         text.layer.borderWidth = 1
         text.layer.borderColor = UIColor.createColor(ligthMode: .black, darkMode: .white).cgColor
-        text.becomeFirstResponder()
         text.addTarget(self, action: #selector(self.statusTextChanged(_:)), for: .editingChanged)
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
@@ -91,6 +90,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView{
         super.init(reuseIdentifier: reuseIdentifier)
         self.setupView()
         self.setupGesture()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -106,7 +106,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView{
         self.addSubview(textField)
         
         NSLayoutConstraint.activate([
-            self.logoutButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            self.logoutButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             self.logoutButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             //self.logoutButton.widthAnchor.constraint(equalToConstant: 140),
             //self.logoutButton.heightAnchor.constraint(equalTo: self.avatarImageView.widthAnchor, multiplier: 1),

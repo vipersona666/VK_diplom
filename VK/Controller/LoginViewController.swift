@@ -13,7 +13,6 @@ class LogInViewController: UIViewController {
     
     private let notifCenter = NotificationCenter.default
     
-    //var loginDelegate: LoginViewControllerDelegate?
     
     var authModel = AuthUser()
     let realm = try! Realm()
@@ -30,7 +29,10 @@ class LogInViewController: UIViewController {
     
     private lazy var logInImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
-        let imageName = "7100_5_02"
+        let imageName = "cat3"
+        imageView.layer.cornerRadius = 50
+        imageView.layer.borderWidth = 3.0
+        imageView.layer.masksToBounds = true
         imageView.image = UIImage(named: imageName)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -83,7 +85,7 @@ class LogInViewController: UIViewController {
     private lazy var logInButton: CustomButton = {
         let customButton = CustomButton(title: "sign_in".localized,
                                         textColor: .white,
-                                        backgroundColorButton: .orange,
+                                        backgroundColorButton: UIColor(named: "appColor")!,
                                         clipsToBoundsOfButton: true,
                                         cornerRadius: 10,
                                         shadowOpacity: 0,
@@ -96,7 +98,7 @@ class LogInViewController: UIViewController {
     private lazy var signUpButton: CustomButton = {
         let customButton = CustomButton(title: "sign_up".localized,
                                         textColor: .white,
-                                        backgroundColorButton: .orange,
+                                        backgroundColorButton: UIColor(named: "appColor")!,
                                         clipsToBoundsOfButton: true,
                                         cornerRadius: 10,
                                         shadowOpacity: 0,
@@ -107,15 +109,17 @@ class LogInViewController: UIViewController {
     }()
     
     private lazy var biometricalAuthButton: CustomButton = {
-        let button = CustomButton(title: "biometrical".localized,
+        let button = CustomButton(title: " Вход по лицу или отпечатку",
                                   textColor: .white,
-                                  backgroundColorButton: .orange,
+                                  backgroundColorButton: UIColor(named: "appColor")!,
                                   clipsToBoundsOfButton: true,
                                   cornerRadius: 10,
                                   shadowOpacity: 0,
                                   shadowOffset: .zero,
                                   translatesAutoresizingMask: false)
         button.isHidden = isBiometria
+        button.setImage(UIImage(systemName: "touchid"), for: UIControl.State.normal)
+        //button.setImage(UIImage(systemName: "faceid"), for: UIControl.State.normal)
         button.addTarget = {self.biometricalButtonPressed()}
            return button
        }()
@@ -129,15 +133,6 @@ class LogInViewController: UIViewController {
         return stackView
     }()
     
-//    private lazy var activityIndicator: UIActivityIndicatorView = {
-//        let ai = UIActivityIndicatorView(style: .medium)
-//        ai.startAnimating()
-//        ai.color = .gray
-//        ai.hidesWhenStopped = true
-//        ai.isHidden = true
-//        ai.translatesAutoresizingMaskIntoConstraints = false
-//        return ai
-//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,20 +140,20 @@ class LogInViewController: UIViewController {
         self.view.addSubview(self.scrollView)
         self.scrollView.addSubview(self.logInImageView)
         self.scrollView.addSubview(self.stackView)
-        //self.scrollView.addSubview(self.biometricalAuthButton)
         self.scrollView.addSubview(self.stackButton)
         self.stackView.addArrangedSubview(logInTextField)
         self.stackView.addArrangedSubview(passTextField)
         self.stackButton.addArrangedSubview(logInButton)
         self.stackButton.addArrangedSubview(signUpButton)
         self.stackButton.addArrangedSubview(biometricalAuthButton)
-        
         self.setupView()
         self.setupGesture()
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.checkAuthUser()
+        //автоматическая авторизация
+        //self.checkAuthUser()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,12 +185,12 @@ class LogInViewController: UIViewController {
             self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             
-            self.logInImageView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 120),
-            self.logInImageView.widthAnchor.constraint(equalToConstant: 100),
-            self.logInImageView.heightAnchor.constraint(equalToConstant: 100),
+            self.logInImageView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 80),
+            self.logInImageView.widthAnchor.constraint(equalToConstant: 240),
+            self.logInImageView.heightAnchor.constraint(equalToConstant: 240),
             self.logInImageView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
             
-            self.stackView.topAnchor.constraint(equalTo: self.logInImageView.bottomAnchor, constant: 120),
+            self.stackView.topAnchor.constraint(equalTo: self.logInImageView.bottomAnchor, constant: 80),
             self.stackView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: 16),
             self.stackView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -16),
             self.stackView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
@@ -205,15 +200,7 @@ class LogInViewController: UIViewController {
             self.stackButton.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: 16),
             self.stackButton.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -16),
             self.stackButton.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
-            self.stackButton.heightAnchor.constraint(equalToConstant: 148),
-            
-//            self.biometricalAuthButton.bottomAnchor.constraint(equalTo: self.stackButton.bottomAnchor, constant: 120),
-//            self.biometricalAuthButton.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: 16),
-//            self.biometricalAuthButton.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -16),
-//            self.biometricalAuthButton.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
-//            self.biometricalAuthButton.heightAnchor.constraint(equalToConstant: 40),
-//            self.biometricalAuthButton.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: 20)
-
+            self.stackButton.heightAnchor.constraint(equalToConstant: 148)
         ])
     }
     
@@ -224,12 +211,13 @@ class LogInViewController: UIViewController {
             realm.add(authModel)
         })
     }
+    
     //проверка, если пользователь уже был залогинен, создаем юзера и заходим
+    //использовал для автоматического входа
     private func checkAuthUser(){
         let lastAuthUser = realm.objects(AuthUser.self).last
         let user = UserDefaults.standard.string(forKey: "authKey")
         if lastAuthUser != nil && lastAuthUser?.login == user {
-            //let isBioAuth = false
             
             let checkerService = CheckerService()
             checkerService.checkCredentials(email: lastAuthUser!.login, password: lastAuthUser!.password) {[weak self] result in
@@ -256,8 +244,8 @@ class LogInViewController: UIViewController {
         }
     }
     
+    //экшн кнопки логина
     @objc private func logInbuttonPressed(){
-        
         if (!logInTextField.text!.isEmpty && !passTextField.text!.isEmpty) {
             let checkerService = CheckerService()
             checkerService.checkCredentials(email: logInTextField.text!, password: passTextField.text!) { result in
@@ -265,9 +253,11 @@ class LogInViewController: UIViewController {
                 case .success(_):
                     let vc = ProfileViewController()
                     self.navigationController?.pushViewController(vc, animated: true)
-                    //сохраняем пользователя в базу рилм
+                    //сохраняем логин и пароль в базу рилм
                     self.saveRealm(login: self.logInTextField.text!, password: self.passTextField.text!)
+                    //сохраняем логин в юзердефолт
                     UserDefaults.standard.set(self.logInTextField.text!, forKey: "authKey")
+                    //UserDefaults.standard.set(self.passTextField.text!, forKey: "passKey")
                     self.logInTextField.text = ""
                     self.passTextField.text = ""
                 case .failure(let error):
@@ -286,8 +276,8 @@ class LogInViewController: UIViewController {
         }
     }
     
+    //экшн кнопки регистрации
     @objc private func signUpButtonPressed(){
-        
         if (!logInTextField.text!.isEmpty && !passTextField.text!.isEmpty) {
             let checkerService = CheckerService()
             checkerService.signUp(email: logInTextField.text!, password: passTextField.text!) { result in
@@ -295,8 +285,9 @@ class LogInViewController: UIViewController {
                 case .success(_):
                     let vc = ProfileViewController()
                     self.navigationController?.pushViewController(vc, animated: true)
-                    //сохраняем пользователя в базу рилм
+                    //сохраняем логин и пароль в базу рилм
                     self.saveRealm(login: self.logInTextField.text!, password: self.passTextField.text!)
+                    //сохраняем логин в юзердефолт
                     UserDefaults.standard.set(self.logInTextField.text!, forKey: "authKey")
                     self.logInTextField.text = ""
                     self.passTextField.text = ""
@@ -304,98 +295,104 @@ class LogInViewController: UIViewController {
                     print("registration_error".localized, error.localizedDescription)
                     let alarm = UIAlertController(title: "registration_error".localized, message: error.localizedDescription, preferredStyle: .alert)
                     let alarmAction = UIAlertAction(title: "close".localized, style: .default)
-                                            alarm.addAction(alarmAction)
-                                            self.present(alarm, animated: true)
+                    alarm.addAction(alarmAction)
+                    self.present(alarm, animated: true)
                 }
-                
             }
         } else {
             let alarm = UIAlertController(title: "empty_field".localized, message: "", preferredStyle: .alert)
             let alarmAction = UIAlertAction(title: "close".localized, style: .default)
-                                    alarm.addAction(alarmAction)
-                                    self.present(alarm, animated: true)
+            alarm.addAction(alarmAction)
+            self.present(alarm, animated: true)
         }
     }
     
+    //авторизация по touchID или faceID, если пользователь уже был зарегестрирован и авторизован
+    private func authBio(){
+        let lastAuthUser = self.realm.objects(AuthUser.self).last
+        let user = UserDefaults.standard.string(forKey: "authKey")
+        if lastAuthUser != nil && lastAuthUser?.login == user {
+            let checkerService = CheckerService()
+            checkerService.checkCredentials(email: lastAuthUser!.login, password: lastAuthUser!.password) {[weak self] result in
+                switch result {
+                case .success(_):
+                    let vc = ProfileViewController()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                    print("auto_login".localized)
+                    self?.displaySuccessAlert()
+                case .failure(_):
+                    print("login_error".localized)
+                    let alarm = UIAlertController(title: "login_error".localized, message: "enter_login_and_password".localized, preferredStyle: .alert)
+                    let alarmAction = UIAlertAction(title: "close".localized, style: .default)
+                    alarm.addAction(alarmAction)
+                    self?.present(alarm, animated: true)
+                }
+            }
+        } else {
+            self.displayErrorAlert(error?.localizedDescription ?? "error_biometrical_auth".localized)
+        }
+    }
+    //экшн кнопки входа по биометрии
     @objc private func biometricalButtonPressed(){
         if isBiometria {
-            context.evaluatePolicy(.deviceOwnerAuthentication,
-                                   localizedReason: "enter_password_to_log".localized) { [weak self] success, error in
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "enter_password_to_log".localized) { [weak self] success, error in
                 DispatchQueue.main.async {
                     if let error = error { print(error.localizedDescription) }
                     if success {
-                        self?.checkAuthUser()
-                        self?.displaySuccessAlert()
+                        self?.authBio()
                     } else {
-                        self?.displayErrorAlert(error?.localizedDescription ?? "error".localized)
+                        self?.displayErrorAlert(error?.localizedDescription ?? "error_biometrical".localized)
                     }
                 }
             }
-           
         } else {
             print(error?.localizedDescription ?? "")
             print("error_biometrical".localized)
         }
-           
     }
+    
+    //алерт при положительной авторизации
     private func displaySuccessAlert(){
         let alert = UIAlertController(title: "excellent".localized, message: "authentication".localized, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "ok".localized, style: .default)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
+        //let alertAction = UIAlertAction(title: "ok".localized, style: .default)
+        //alert.addAction(alertAction)
+        self.present(alert, animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             alert.dismiss(animated: true, completion: nil)
         }
-        
     }
     
-    
+    //алерт при ошибке
     private func displayErrorAlert(_ error: String){
         let alert = UIAlertController(title: "error".localized, message: error, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "ok".localized, style: .default)
         alert.addAction(alertAction)
-        present(alert, animated: true)
+        self.present(alert, animated: true)
     }
 
     private func setupGesture(){
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
     
     @objc private func didShowKeyboard(_ notification: Notification){
         self.logInImageView.alpha = 0.3
-        if let keyboardSize =
-            (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            self.scrollView.setContentOffset(CGPoint(x:0, y: keyboardSize.height/2), animated: true)
-            self.scrollView.verticalScrollIndicatorInsets =
-            UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.contentInset.bottom = keyboardSize.height + 170
+            scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height , right: 0)
         }
-        
     }
 
     @objc private func didHideKeyboard(){
         self.logInImageView.alpha = 1
         self.scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
-                scrollView.verticalScrollIndicatorInsets = .zero
+        scrollView.verticalScrollIndicatorInsets = .zero
     }
     
     @objc private func hideKeyboard(){
         self.view.endEditing(true)
         self.scrollView.setContentOffset(.zero, animated: true)
-        
     }
-    // Сдвигаем scrollView.bottom вверх на высоту клавиатуры
-//        @objc private func keyboardShow(notification: NSNotification) {
-//            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//                scrollView.contentInset.bottom = keyboardSize.height + 32
-//                scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 32, right: 0)
-//            }
-//        }
-//        // Восстанавливаем исходное значение scrollView.bottom
-//        @objc private func keyboardHide() {
-//            scrollView.contentInset = .zero
-//            scrollView.verticalScrollIndicatorInsets = .zero
-//        }
 }
 
 

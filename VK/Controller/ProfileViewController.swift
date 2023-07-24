@@ -10,15 +10,6 @@ import UIKit
 //профиль с лентой новостей
 class ProfileViewController: UIViewController {
     
-//    let user: User?
-//    
-//    init(user: User){
-//        self.user = user
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     //заполняем таблицу данными из массива
     private var postModel = posts
@@ -57,12 +48,6 @@ class ProfileViewController: UIViewController {
         ])
     }
     
-    func logoutButton(){
-     
-        
-    }
-   
-   
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
@@ -128,6 +113,5 @@ extension ProfileViewController: ProfileHeaderViewDelegate{
         UserDefaults.standard.set(login, forKey: "authKey")
         navigationController?.popToRootViewController(animated: true)
     }
-    
     
 }
