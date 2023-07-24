@@ -264,15 +264,15 @@ class LogInViewController: UIViewController {
                     print("login_error".localized, error.localizedDescription)
                     let alarm = UIAlertController(title: "login_error".localized, message: error.localizedDescription, preferredStyle: .alert)
                     let alarmAction = UIAlertAction(title: "close".localized, style: .default)
-                                            alarm.addAction(alarmAction)
-                                            self.present(alarm, animated: true)
+                    alarm.addAction(alarmAction)
+                    self.present(alarm, animated: true)
                 }
             }
         } else {
             let alarm = UIAlertController(title: "empty_field".localized, message: "", preferredStyle: .alert)
             let alarmAction = UIAlertAction(title: "close".localized, style: .default)
-                                    alarm.addAction(alarmAction)
-                                    self.present(alarm, animated: true)
+            alarm.addAction(alarmAction)
+            self.present(alarm, animated: true)
         }
     }
     
@@ -318,7 +318,7 @@ class LogInViewController: UIViewController {
                 case .success(_):
                     let vc = ProfileViewController()
                     self?.navigationController?.pushViewController(vc, animated: true)
-                    print("auto_login".localized)
+                    //print("auto_login".localized)
                     self?.displaySuccessAlert()
                 case .failure(_):
                     print("login_error".localized)
