@@ -113,9 +113,19 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
 }
 extension ProfileViewController: ProfileHeaderViewDelegate{
     func actionButton() {
-        let login = ""
-        UserDefaults.standard.set(login, forKey: "authKey")
-        navigationController?.popToRootViewController(animated: true)
+        let alert = UIAlertController(title: "", message: "logout".localized, preferredStyle: .actionSheet)
+        let trashButton = UIAlertAction(title: "out".localized, style: .destructive) {_ in
+            //print("Выход")
+            let login = ""
+            UserDefaults.standard.set(login, forKey: "authKey")
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        let cancelButton = UIAlertAction(title: "cancel".localized, style: .cancel) {_ in
+            //print("Отмена")
+        }
+        alert.addAction(trashButton)
+        alert.addAction(cancelButton)
+        self.present(alert, animated: true)
     }
     
 }

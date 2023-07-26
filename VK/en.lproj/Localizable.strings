@@ -59,3 +59,6 @@
 "check_update" = "Check out the latest updates";
 "click_notification" = "Click on this notification to view updates";
 "status" = "Add a status";
+"logout" = "Do you really want to log out of your account?";
+"out" = "Log out";
+"cancel" = "Cancel the action";
