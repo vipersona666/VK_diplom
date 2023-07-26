@@ -33,6 +33,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .createColor(ligthMode: .white, darkMode: .black)
         setupConstraints()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = true
     }

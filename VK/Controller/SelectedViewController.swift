@@ -35,7 +35,7 @@ class SelectedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         coreDataManager.reloadPosts()
         tableView.reloadData()
-        print(setupPost.count)
+        //print(setupPost.count)
     }
     
     private func setupConstraints(){

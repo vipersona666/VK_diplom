@@ -11,7 +11,7 @@ class CoreDataManager{
     
     static let shared = CoreDataManager()
     
-    init(){
+    private init(){
         reloadPosts()
     }
     
@@ -62,9 +62,5 @@ class CoreDataManager{
         saveContext()
         reloadPosts()
     }
-    
-    
-    
-    
 }
 

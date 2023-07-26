@@ -62,7 +62,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView{
     
     private lazy var infoLabel: UILabel = {
         let info = UILabel(frame: .zero)
-        info.text = "Waiting for something..."
+        info.text = "status".localized
         info.textColor = .createColor(ligthMode: .black, darkMode: .white)
         info.font = UIFont.systemFont(ofSize: 14.0)
         info.translatesAutoresizingMaskIntoConstraints = false

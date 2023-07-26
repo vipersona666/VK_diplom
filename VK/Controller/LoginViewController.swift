@@ -109,7 +109,7 @@ class LogInViewController: UIViewController {
     }()
     
     private lazy var biometricalAuthButton: CustomButton = {
-        let button = CustomButton(title: " Вход по лицу или отпечатку",
+        let button = CustomButton(title: "biometrical".localized,
                                   textColor: .white,
                                   backgroundColorButton: UIColor(named: "appColor")!,
                                   clipsToBoundsOfButton: true,
@@ -169,6 +169,8 @@ class LogInViewController: UIViewController {
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error){
             isBiometria = true
         }
+        self.logInTextField.text = ""
+        self.passTextField.text = ""
        
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -257,9 +259,9 @@ class LogInViewController: UIViewController {
                     self.saveRealm(login: self.logInTextField.text!, password: self.passTextField.text!)
                     //сохраняем логин в юзердефолт
                     UserDefaults.standard.set(self.logInTextField.text!, forKey: "authKey")
-                    //UserDefaults.standard.set(self.passTextField.text!, forKey: "passKey")
-                    self.logInTextField.text = ""
-                    self.passTextField.text = ""
+                    UserDefaults.standard.set(self.passTextField.text!, forKey: "passKey")
+                    //self.logInTextField.text = ""
+                    //self.passTextField.text = ""
                 case .failure(let error):
                     print("login_error".localized, error.localizedDescription)
                     let alarm = UIAlertController(title: "login_error".localized, message: error.localizedDescription, preferredStyle: .alert)
@@ -289,8 +291,9 @@ class LogInViewController: UIViewController {
                     self.saveRealm(login: self.logInTextField.text!, password: self.passTextField.text!)
                     //сохраняем логин в юзердефолт
                     UserDefaults.standard.set(self.logInTextField.text!, forKey: "authKey")
-                    self.logInTextField.text = ""
-                    self.passTextField.text = ""
+                    UserDefaults.standard.set(self.logInTextField.text!, forKey: "passKey")
+                    //self.logInTextField.text = ""
+                    //self.passTextField.text = ""
                 case .failure(let error):
                     print("registration_error".localized, error.localizedDescription)
                     let alarm = UIAlertController(title: "registration_error".localized, message: error.localizedDescription, preferredStyle: .alert)
@@ -321,7 +324,7 @@ class LogInViewController: UIViewController {
                     //print("auto_login".localized)
                     self?.displaySuccessAlert()
                 case .failure(_):
-                    print("login_error".localized)
+                    //print("login_error".localized)
                     let alarm = UIAlertController(title: "login_error".localized, message: "enter_login_and_password".localized, preferredStyle: .alert)
                     let alarmAction = UIAlertAction(title: "close".localized, style: .default)
                     alarm.addAction(alarmAction)
@@ -346,7 +349,7 @@ class LogInViewController: UIViewController {
                 }
             }
         } else {
-            print(error?.localizedDescription ?? "")
+            //print(error?.localizedDescription ?? "")
             print("error_biometrical".localized)
         }
     }

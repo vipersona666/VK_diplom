@@ -47,7 +47,7 @@
 "status" = "Set the status";
 "show_status" = "Show status";
 "albom" = "Photos";
-"biometrical" = "Use Face ID";
+"biometrical" = " Entry by FaceID or TouchID";
 "empty_field" = "Fields must not be empty";
 "enter_password_to_log" = "Enter your password to log into your account";
 "error_biometrical" = "Error. Unable to use biometrics";
@@ -58,3 +58,4 @@
 "error" = "Error";
 "check_update" = "Check out the latest updates";
 "click_notification" = "Click on this notification to view updates";
+"status" = "Add a status";
