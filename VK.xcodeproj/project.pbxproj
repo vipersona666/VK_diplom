@@ -26,6 +26,9 @@
 		755CBE8C2A66D50D0058FD7B /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755CBE8B2A66D50D0058FD7B /* LoginViewControllerDelegate.swift */; };
 		7568B8162A5EC84900FF88F7 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7568B8152A5EC84900FF88F7 /* PostTableViewCell.swift */; };
 		7568B8182A5EC9BD00FF88F7 /* ExtentionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7568B8172A5EC9BD00FF88F7 /* ExtentionColor.swift */; };
+		75722DBA2A7CF14900F26242 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75722DB92A7CF14800F26242 /* APIManager.swift */; };
+		75722DBC2A7D12C200F26242 /* RickMortiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75722DBB2A7D12C200F26242 /* RickMortiData.swift */; };
+		75722DBE2A853A7D00F26242 /* ExtentionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75722DBD2A853A7C00F26242 /* ExtentionUIImage.swift */; };
 		75D104BC2A5C598200EA8E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D104BB2A5C598200EA8E3A /* AppDelegate.swift */; };
 		75D104BE2A5C598200EA8E3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D104BD2A5C598200EA8E3A /* SceneDelegate.swift */; };
 		75D104C02A5C598200EA8E3A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D104BF2A5C598200EA8E3A /* LoginViewController.swift */; };
@@ -56,6 +59,9 @@
 		755CBE8B2A66D50D0058FD7B /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		7568B8152A5EC84900FF88F7 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		7568B8172A5EC9BD00FF88F7 /* ExtentionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionColor.swift; sourceTree = "<group>"; };
+		75722DB92A7CF14800F26242 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		75722DBB2A7D12C200F26242 /* RickMortiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortiData.swift; sourceTree = "<group>"; };
+		75722DBD2A853A7C00F26242 /* ExtentionUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionUIImage.swift; sourceTree = "<group>"; };
 		75D104B82A5C598200EA8E3A /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D104BB2A5C598200EA8E3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75D104BD2A5C598200EA8E3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +136,8 @@
 				752F81272A66AF9900287043 /* AuthModel.swift */,
 				752F81292A66B05400287043 /* ChekerService.swift */,
 				755CBE892A66C9B30058FD7B /* User.swift */,
+				75722DB92A7CF14800F26242 /* APIManager.swift */,
+				75722DBB2A7D12C200F26242 /* RickMortiData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -141,6 +149,7 @@
 				75D104E32A5D58BC00EA8E3A /* ExtentionString.swift */,
 				752F81172A63200800287043 /* CustomButton.swift */,
 				75D104E52A5D5E8D00EA8E3A /* Palette.swift */,
+				75722DBD2A853A7C00F26242 /* ExtentionUIImage.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -257,6 +266,7 @@
 				755CBE8C2A66D50D0058FD7B /* LoginViewControllerDelegate.swift in Sources */,
 				752F81282A66AF9900287043 /* AuthModel.swift in Sources */,
 				75D104D42A5C621200EA8E3A /* ProfileViewController.swift in Sources */,
+				75722DBC2A7D12C200F26242 /* RickMortiData.swift in Sources */,
 				7568B8182A5EC9BD00FF88F7 /* ExtentionColor.swift in Sources */,
 				75D104BE2A5C598200EA8E3A /* SceneDelegate.swift in Sources */,
 				752F81142A600E5600287043 /* PhotosTableViewCell.swift in Sources */,
@@ -265,8 +275,10 @@
 				75D104E62A5D5E8D00EA8E3A /* Palette.swift in Sources */,
 				752F811E2A65717500287043 /* PhotosCollectionViewCell.swift in Sources */,
 				752F81122A5FF30900287043 /* Post.xcdatamodeld in Sources */,
+				75722DBA2A7CF14900F26242 /* APIManager.swift in Sources */,
 				752F81182A63200800287043 /* CustomButton.swift in Sources */,
 				755CBE8A2A66C9B30058FD7B /* User.swift in Sources */,
+				75722DBE2A853A7D00F26242 /* ExtentionUIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

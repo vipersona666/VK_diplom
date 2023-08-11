@@ -16,11 +16,11 @@ class PostTableViewCell: UITableViewCell {
     
     struct ViewModel{
         let author: String
-        let image: String
+        let image: URL
         let description: String
         let likes: Int
-        let views: Int
-        let uniqID: String
+        //let views: Int
+        //let uniqID: String
     }
     
     private lazy var authorLabel: UILabel = {
@@ -74,12 +74,13 @@ class PostTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func setup(with viewmodel: ViewModel) {
         self.authorLabel.text = viewmodel.author
-        self.postImageView.image = UIImage(named: viewmodel.image)
-        self.descriptionLabel.text = viewmodel.description
-        self.likesLabel.text = "Likes: \(viewmodel.likes)"
-        self.viewsLabel.text = "Views: \(viewmodel.views)"
+        self.postImageView.load(url: viewmodel.image) 
+        self.descriptionLabel.text = "Status: \(viewmodel.description)"
+        self.likesLabel.text = "Number: \(viewmodel.likes)"
+        //self.viewsLabel.text = "Views: \(viewmodel.views)"
        coreDataManager.reloadPosts()
     }
     
@@ -88,9 +89,9 @@ class PostTableViewCell: UITableViewCell {
         if let index = coreDataManager.posts.firstIndex(where: { $0.id == post })  {
             authorLabel.text = coreDataManager.posts[index].title
             postImageView.image = UIImage(named: coreDataManager.posts[index].image!)
-            descriptionLabel.text = coreDataManager.posts[index].descriptionPost
-            likesLabel.text = "Likes: \(coreDataManager.posts[index].likes)"
-            viewsLabel.text = "Views: \(coreDataManager.posts[index].views)"
+            descriptionLabel.text = "Status: \(coreDataManager.posts[index].descriptionPost ?? "no status")"
+            likesLabel.text = "Number: \(coreDataManager.posts[index].likes)"
+            //viewsLabel.text = "Views: \(coreDataManager.posts[index].views)"
         }
     }
     
@@ -103,7 +104,7 @@ class PostTableViewCell: UITableViewCell {
         self.addSubview(self.postImageView)
         self.addSubview(self.descriptionLabel)
         self.addSubview(self.likesLabel)
-        self.addSubview(self.viewsLabel)
+        //self.addSubview(self.viewsLabel)
         
         NSLayoutConstraint.activate([
             self.authorLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
@@ -123,9 +124,9 @@ class PostTableViewCell: UITableViewCell {
             self.likesLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             self.likesLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
         
-            self.viewsLabel.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 16),
-            self.viewsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            self.viewsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
+//            self.viewsLabel.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 16),
+//            self.viewsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+//            self.viewsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
         ])
     }
     

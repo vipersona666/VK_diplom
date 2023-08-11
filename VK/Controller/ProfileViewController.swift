@@ -12,7 +12,10 @@ class ProfileViewController: UIViewController {
     
     
     //заполняем таблицу данными из массива
-    private var postModel = posts
+    //private var postModel = posts
+    private var imagePost: UIImage?
+    private var hero: [RickMortiData.Hero]?
+    private var url: URL?
 
    
     private lazy var tableView: UITableView = {
@@ -28,17 +31,36 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .createColor(ligthMode: .white, darkMode: .black)
         setupConstraints()
+        createPost()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func createPost(){
+        APIManager.shared.getPost {[weak self] values in
+            switch values {
+            case .success(let rickMortiData):
+                print("Data:\(rickMortiData.results.count)")
+                self?.hero = rickMortiData.results
+                //self?.hero = hero
+                //print(self!.hero?.count)
+                //print(self?.postData)
+                //let image: UIImage = APIManager.shared.getImage(from:hero[1].image)!
+                //print(image)
+                
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+            
+        }
     }
    
     
@@ -51,7 +73,6 @@ class ProfileViewController: UIViewController {
             self.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
@@ -77,7 +98,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        postModel.count
+        //postModel.count
+        hero?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,12 +117,32 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Default", for: indexPath)
                 return cell
             }
-        let viewModel = PostTableViewCell.ViewModel(author: postModel[indexPath.row].author, image: postModel[indexPath.row].image, description: postModel[indexPath.row].description, likes: postModel[indexPath.row].likes, views: postModel[indexPath.row].views, uniqID: postModel[indexPath.row].id)
+        
+        let imageURL = hero?[indexPath.row].image ?? "no data"
+        if let url = URL(string: imageURL ) {
+            self.url = url
+        }
+        
+        
+        let viewModel = PostTableViewCell.ViewModel(author: hero?[indexPath.row].name ?? "no name", image: self.url!, description: hero?[indexPath.row].status ?? "no status", likes: hero?[indexPath.row].id ?? 0
+        )
         cell.setup(with: viewModel)
         cell.index = indexPath
-        
+        //tableView.reloadData()
+       
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+//        if indexPath.section == 1 && indexPath.row == 1 {
+//            if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostTableViewCell{
+//                UIView.animate(withDuration: 0.2) {
+//                    cell.
+//                }
+//            }
+//
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
