@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+//Данный вариант без использования сети, данные берутся из массива
+
 struct PostModel{
     let author: String
     let description: String

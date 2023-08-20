@@ -7,11 +7,15 @@
 
 import UIKit
 import CoreData
+
 //создаем ячейку с постами, данные берем из coredata
 class PostTableViewCell: UITableViewCell {
     
     var index: IndexPath?
-    let coreDataManager = CoreDataManager.shared
+    //let coreDataManager = CoreDataManager.shared
+    let coreDataService = CoreDataService.shared
+    private var url: URL?
+    private var model = CoreDataService.shared.postsData
 
     
     struct ViewModel{
@@ -57,17 +61,18 @@ class PostTableViewCell: UITableViewCell {
         return likesLabel
     }()
     
-    private lazy var viewsLabel: UILabel = {
-        let viewsLabel = UILabel()
-        viewsLabel.textColor = .createColor(ligthMode: .black, darkMode: .white)
-        viewsLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        viewsLabel.translatesAutoresizingMaskIntoConstraints = false
-        return viewsLabel
-    }()
+//    private lazy var viewsLabel: UILabel = {
+//        let viewsLabel = UILabel()
+//        viewsLabel.textColor = .createColor(ligthMode: .black, darkMode: .white)
+//        viewsLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+//        viewsLabel.translatesAutoresizingMaskIntoConstraints = false
+//        return viewsLabel
+//    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupView()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -81,18 +86,26 @@ class PostTableViewCell: UITableViewCell {
         self.descriptionLabel.text = "Status: \(viewmodel.description)"
         self.likesLabel.text = "Number: \(viewmodel.likes)"
         //self.viewsLabel.text = "Views: \(viewmodel.views)"
-       coreDataManager.reloadPosts()
+       coreDataService.reloadData()
+
     }
-    
+   
     func setupSelectedPost(post: String){
-        coreDataManager.reloadPosts()
-        if let index = coreDataManager.posts.firstIndex(where: { $0.id == post })  {
-            authorLabel.text = coreDataManager.posts[index].title
-            postImageView.image = UIImage(named: coreDataManager.posts[index].image!)
-            descriptionLabel.text = "Status: \(coreDataManager.posts[index].descriptionPost ?? "no status")"
-            likesLabel.text = "Number: \(coreDataManager.posts[index].likes)"
+        coreDataService.reloadData()
+        
+        if let index = coreDataService.data.firstIndex(where: { $0.id == post })  {
+            let imageURL = coreDataService.data[index].image ?? "no data"
+            if let url = URL(string: imageURL ) {
+                self.url = url
+            }
+            //print("Index: \(index)")
+            authorLabel.text = coreDataService.data[index].name
+            postImageView.load(url: url!)
+            descriptionLabel.text = "Status: \(coreDataService.data[index].status ?? "no status")"
+            likesLabel.text = "Number: \(coreDataService.data[index].id ?? "no number")"
             //viewsLabel.text = "Views: \(coreDataManager.posts[index].views)"
         }
+        
     }
     
     
@@ -131,9 +144,10 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @objc func doubleTap() {
-        let model = posts
+        //print(index?.row ?? 0)
+        
            if index != nil {
-               if let _ = coreDataManager.posts.firstIndex(where: { $0.id == model[index!.row].id }) {
+               if let _ = coreDataService.data.firstIndex(where: { $0.id == String(model[index?.row ?? 0].id) }) {
                    print("Эта запись уже в избранном!")
                    let alert = UIAlertController(title: "alert_check_word".localized, message: .none, preferredStyle: .actionSheet)
                    let cancelButton = UIAlertAction(title: "ok".localized, style: .cancel) {_ in
@@ -149,10 +163,26 @@ class PostTableViewCell: UITableViewCell {
                    keyWindow?.endEditing(true)
                    keyWindow?.rootViewController?.present(alert, animated: true)
                } else {
-                   //print(model[index!.row].author)
-                   coreDataManager.createPost (title: model[index!.row].author , descriptionPost: model[index!.row].description, image: model[index!.row].image, likes: Int16(model[index!.row].likes), views: Int16(model[index!.row].views), id: model[index!.row].id)
-                   coreDataManager.reloadPosts()
-                 
+                   let alert = UIAlertController(title: "hero".localized, message: "hero_post".localized, preferredStyle: .alert)
+                   
+                   let keyWindow = UIApplication.shared.connectedScenes
+                           .filter({$0.activationState == .foregroundActive})
+                           .map({$0 as? UIWindowScene})
+                           .compactMap({$0})
+                           .first?.windows
+                           .filter({$0.isKeyWindow}).first
+                   keyWindow?.endEditing(true)
+                   keyWindow?.rootViewController?.present(alert, animated: true)
+                   
+                   DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                       alert.dismiss(animated: true, completion: nil)
+                   }
+                   //print("coreDataService.data.first?.name: \(String(describing: coreDataService.postsData.first?.name))")
+                   
+                   coreDataService.createData (id: String(model[index!.row].id) , status: model[index!.row].status , name: model[index!.row].name , image: model[index!.row].image )
+                   //coreDataManager.reloadPosts()
+                   coreDataService.reloadData()
+                   
                }
            }
         

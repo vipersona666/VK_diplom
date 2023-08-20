@@ -10,11 +10,11 @@ import CoreData
 
 class SelectedViewController: UIViewController {
     
-    let coreDataManager = CoreDataManager.shared
+    let coreDataService = CoreDataService.shared
     var idPost = [String]()
-    var setupPost: [Posts] {
-            get { return coreDataManager.posts }
-            set { coreDataManager.posts = newValue }
+    var setupPost: [RickMortiDataPost] {
+        get { return coreDataService.data }
+        set { coreDataService.data = newValue }
         }
     
     private lazy var tableView: UITableView = {
@@ -31,11 +31,13 @@ class SelectedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
+        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        coreDataManager.reloadPosts()
-        tableView.reloadData()
-        //print(setupPost.count)
+        coreDataService.reloadData()
+        self.tableView.reloadData()
+        //print("RickMortiDataPost - count: \(setupPost.count)")
     }
     
     private func setupConstraints(){
@@ -77,8 +79,8 @@ extension SelectedViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let post = coreDataManager.posts[indexPath.row]
-            coreDataManager.deletePost(post: post)
+            let post = coreDataService.data[indexPath.row]
+            coreDataService.deletePost(post: post)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

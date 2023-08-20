@@ -62,3 +62,5 @@
 "logout" = "Do you really want to log out of your account?";
 "out" = "Log out";
 "cancel" = "Cancel the action";
+"hero" = "Saved";
+"hero_post" = "This post is now in favorites";

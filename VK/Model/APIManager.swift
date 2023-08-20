@@ -36,9 +36,9 @@ class APIManager{
                 }
                 do {
                     
-                   let rickMortiData = try? JSONDecoder().decode(RickMortiData.self, from: data)
+                    let rickMortiData = try? JSONDecoder().decode(RickMortiData.self, from: data)
                     completion(.success(rickMortiData!))
-                 
+                    //throw (NetworkError.invalidData)
                 } catch {
                     completion(.failure(NetworkError.invalidData))
                 }

@@ -15,6 +15,8 @@ class CoreDataManager{
         reloadPosts()
     }
     
+    //Данный вариант без использования сети, данные берутся из массива
+    
     var posts = [Posts]()
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -39,13 +41,12 @@ class CoreDataManager{
         }
     }
     
-    func createPost(title: String, descriptionPost: String, image: String, likes: Int16, views: Int16, id: String){
+    func createPost(title: String, descriptionPost: String, image: String, likes: Int16, id: String){
         let post = Posts(context: persistentContainer.viewContext)
         post.title = title
         post.descriptionPost = descriptionPost
         post.image = image
         post.likes = likes
-        post.views = views
         post.id = id
         saveContext()
         reloadPosts()

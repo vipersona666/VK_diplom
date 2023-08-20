@@ -29,6 +29,8 @@
 		75722DBA2A7CF14900F26242 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75722DB92A7CF14800F26242 /* APIManager.swift */; };
 		75722DBC2A7D12C200F26242 /* RickMortiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75722DBB2A7D12C200F26242 /* RickMortiData.swift */; };
 		75722DBE2A853A7D00F26242 /* ExtentionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75722DBD2A853A7C00F26242 /* ExtentionUIImage.swift */; };
+		7586C4B32A8B86CD005BD116 /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7586C4B12A8B86CD005BD116 /* Data.xcdatamodeld */; };
+		7586C4B52A8CBCFF005BD116 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7586C4B42A8CBCFF005BD116 /* CoreDataService.swift */; };
 		75D104BC2A5C598200EA8E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D104BB2A5C598200EA8E3A /* AppDelegate.swift */; };
 		75D104BE2A5C598200EA8E3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D104BD2A5C598200EA8E3A /* SceneDelegate.swift */; };
 		75D104C02A5C598200EA8E3A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D104BF2A5C598200EA8E3A /* LoginViewController.swift */; };
@@ -62,6 +64,8 @@
 		75722DB92A7CF14800F26242 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		75722DBB2A7D12C200F26242 /* RickMortiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortiData.swift; sourceTree = "<group>"; };
 		75722DBD2A853A7C00F26242 /* ExtentionUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionUIImage.swift; sourceTree = "<group>"; };
+		7586C4B22A8B86CD005BD116 /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
+		7586C4B42A8CBCFF005BD116 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		75D104B82A5C598200EA8E3A /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D104BB2A5C598200EA8E3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75D104BD2A5C598200EA8E3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		75D104AF2A5C598200EA8E3A = {
 			isa = PBXGroup;
 			children = (
+				7586C4B12A8B86CD005BD116 /* Data.xcdatamodeld */,
 				752F81102A5FF30900287043 /* Post.xcdatamodeld */,
 				75D104BA2A5C598200EA8E3A /* VK */,
 				75D104B92A5C598200EA8E3A /* Products */,
@@ -138,6 +143,7 @@
 				755CBE892A66C9B30058FD7B /* User.swift */,
 				75722DB92A7CF14800F26242 /* APIManager.swift */,
 				75722DBB2A7D12C200F26242 /* RickMortiData.swift */,
+				7586C4B42A8CBCFF005BD116 /* CoreDataService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 				7568B8182A5EC9BD00FF88F7 /* ExtentionColor.swift in Sources */,
 				75D104BE2A5C598200EA8E3A /* SceneDelegate.swift in Sources */,
 				752F81142A600E5600287043 /* PhotosTableViewCell.swift in Sources */,
+				7586C4B52A8CBCFF005BD116 /* CoreDataService.swift in Sources */,
 				752F810D2A5FEEDB00287043 /* CoreDataManager.swift in Sources */,
 				752F81162A63174100287043 /* ProfileHeaderView.swift in Sources */,
 				75D104E62A5D5E8D00EA8E3A /* Palette.swift in Sources */,
@@ -277,6 +284,7 @@
 				752F81122A5FF30900287043 /* Post.xcdatamodeld in Sources */,
 				75722DBA2A7CF14900F26242 /* APIManager.swift in Sources */,
 				752F81182A63200800287043 /* CustomButton.swift in Sources */,
+				7586C4B32A8B86CD005BD116 /* Data.xcdatamodeld in Sources */,
 				755CBE8A2A66C9B30058FD7B /* User.swift in Sources */,
 				75722DBE2A853A7D00F26242 /* ExtentionUIImage.swift in Sources */,
 			);
@@ -554,6 +562,16 @@
 			);
 			currentVersion = 752F81112A5FF30900287043 /* Post.xcdatamodel */;
 			path = Post.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		7586C4B12A8B86CD005BD116 /* Data.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7586C4B22A8B86CD005BD116 /* Data.xcdatamodel */,
+			);
+			currentVersion = 7586C4B22A8B86CD005BD116 /* Data.xcdatamodel */;
+			path = Data.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

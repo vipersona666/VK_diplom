@@ -11,8 +11,8 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     
-    //заполняем таблицу данными из массива
-    //private var postModel = posts
+    //заполняем таблицу данными из сети (массива)
+    
     private var imagePost: UIImage?
     private var hero: [RickMortiData.Hero]?
     private var url: URL?
@@ -50,12 +50,7 @@ class ProfileViewController: UIViewController {
             case .success(let rickMortiData):
                 print("Data:\(rickMortiData.results.count)")
                 self?.hero = rickMortiData.results
-                //self?.hero = hero
-                //print(self!.hero?.count)
-                //print(self?.postData)
-                //let image: UIImage = APIManager.shared.getImage(from:hero[1].image)!
-                //print(image)
-                
+                CoreDataService.shared.postsData = rickMortiData.results
             case .failure(let failure):
                 print(failure.localizedDescription)
             }
@@ -98,7 +93,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //postModel.count
         hero?.count ?? 0
     }
     
@@ -128,6 +122,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
         )
         cell.setup(with: viewModel)
         cell.index = indexPath
+        
         //tableView.reloadData()
        
         return cell
@@ -157,13 +152,11 @@ extension ProfileViewController: ProfileHeaderViewDelegate{
     func actionButton() {
         let alert = UIAlertController(title: "", message: "logout".localized, preferredStyle: .actionSheet)
         let trashButton = UIAlertAction(title: "out".localized, style: .destructive) {_ in
-            //print("Выход")
             let login = ""
             UserDefaults.standard.set(login, forKey: "authKey")
             self.navigationController?.popToRootViewController(animated: true)
         }
         let cancelButton = UIAlertAction(title: "cancel".localized, style: .cancel) {_ in
-            //print("Отмена")
         }
         alert.addAction(trashButton)
         alert.addAction(cancelButton)
