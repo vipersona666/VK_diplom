@@ -122,7 +122,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
         )
         cell.setup(with: viewModel)
         cell.index = indexPath
-        
         //tableView.reloadData()
        
         return cell

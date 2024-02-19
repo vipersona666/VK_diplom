@@ -23,25 +23,34 @@ class APIManager{
     func getPost(completion: @escaping (Result<RickMortiData, Error>) -> Void) {
         let url = URL(string: urlString)
         let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url! ) {data, response, error in
+        let task = session.dataTask(with: url! ) { data, response, error in
+            let rickMortiData: RickMortiData
+//            defer {
+//                DispatchQueue.main.async {
+//                    completion(.success(rickMortiData))
+//                }
+//            }
             if let error {
                 print(error)
+                completion(.failure(NetworkError.badResponse))
+                return
+            }
+            if (response as? HTTPURLResponse)?.statusCode != 200 {
+                print("Status code != 200")
+                completion(.failure(NetworkError.badResponse))
+                return
+            }
+            guard let data else {
                 completion(.failure(NetworkError.invalidData))
-            } else {
-                //let httpResponse = response as? HTTPURLResponse
-               //print(httpResponse!)
+                return
+            }
+            do {
                 
-                guard let data else {
-                    return
-                }
-                do {
-                    
-                    let rickMortiData = try? JSONDecoder().decode(RickMortiData.self, from: data)
-                    completion(.success(rickMortiData!))
-                    //throw (NetworkError.invalidData)
-                } catch {
-                    completion(.failure(NetworkError.invalidData))
-                }
+                rickMortiData = try JSONDecoder().decode(RickMortiData.self, from: data)
+                completion(.success(rickMortiData))
+ 
+            } catch {
+                completion(.failure(error))
             }
         }
         task.resume()
